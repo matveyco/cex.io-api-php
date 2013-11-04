@@ -79,27 +79,27 @@ class cexapi
  
  public function ticker($couple)
   {
-   return $this -> api_call('order_book', array(), 0, $couple = 'GHS/BTC');
+   return $this -> api_call('order_book', array(), false, $couple = 'GHS/BTC');
   }
 
  public function trade_history($since = 1, $couple = 'GHS/BTC')
   {
-   return $this -> api_call('trade_history',array("since" => $since), 0, $couple);
+   return $this -> api_call('trade_history',array("since" => $since), false, $couple);
   }
 
  public function balance()
   {
-   return $this -> api_call('balance',array(), 1);
+   return $this -> api_call('balance',array(), true);
   }
 
  public function open_orders($couple = 'GHS/BTC')
   {
-   return $this -> api_call('open_orders',array(),1,$couple);
+   return $this -> api_call('open_orders',array(),true,$couple);
   }
 
  public function cancel_order($order_id)
   {
-   return $this -> api_call('cancel_order', array("id" => $order_id),1);
+   return $this -> api_call('cancel_order', array("id" => $order_id),true);
   }
 	      
  public function place_order($ptype = 'buy', $amount = 1, $price = 1, $couple = 'GHS/BTC')
@@ -107,7 +107,7 @@ class cexapi
    return $this -> api_call('place_order', array(
     "type" => ptype,
     "amount" => amount,
-    "price" => price),1,couple);
+    "price" => price),true,couple);
   }
 
 }
