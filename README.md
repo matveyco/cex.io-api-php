@@ -18,10 +18,11 @@ CEX.IO API integration. PHP sources.
 ```php
   api = new cexapi($username,$api_key,$api_secret);
 ```
+```
 $username - your username on cex.io
 $api_key - your API key
 $api_secret - your API secret code
-
+```
 ###4. Methods and parameters:
 
 ####a) API method parametrs
@@ -57,8 +58,8 @@ $api = new cexapi($username, $api_key, $api_secret);
 var_dump($api -> balance());
 ?>
 ```
-```array(3) {
-["timestamp"]=> string '1383378763', 'BTC': {'available': '0.04722110', 'orders': '0.00170000'}, 'GHS': {'available': '0.01000000'} }
+```json
+{'timestamp': '1383379054', 'BTC': {'available': '0.04614310', 'orders': '0.00170000'}, 'GHS': {'available': '0.02000000'}}
 ```
 
 ####Get balance:
