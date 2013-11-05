@@ -1,4 +1,4 @@
-cex.io-api-python
+cex.io-api-PHP
 =================
 
 CEX.IO API integration. PHP sources.
