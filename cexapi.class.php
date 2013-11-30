@@ -1,4 +1,4 @@
-<?
+<?php
 
 ## Author:        t0pep0
 ## e-mail:        t0pep0.gentoo@gmail.com
@@ -105,9 +105,9 @@ class cexapi
  public function place_order($ptype = 'buy', $amount = 1, $price = 1, $couple = 'GHS/BTC')
   {
    return $this -> api_call('place_order', array(
-    "type" => ptype,
-    "amount" => amount,
-    "price" => price),true,couple);
+    "type" => $ptype,
+    "amount" => $amount,
+    "price" => $price),true,$couple);
   }
 
 }
