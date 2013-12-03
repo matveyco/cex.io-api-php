@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
  * Author: t0pep0
@@ -51,7 +51,7 @@ class cexapi {
 	}
 	 
 	/**
-	 * Send post request to Cex.io API
+	 * Send post request to Cex.io API.
 	 * @param string $url
 	 * @param array $param
 	 * @return array JSON results
@@ -73,7 +73,7 @@ class cexapi {
 		curl_setopt($ch, CURLOPT_USERAGENT, 'phpAPI');
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 		$out = curl_exec($ch);
-		curl_close($ch);
+		curl_close($ch);	
 		
 		return $out;
 	} 
@@ -171,9 +171,10 @@ class cexapi {
 	 */
 	public function place_order($ptype = 'buy', $amount = 1, $price = 1, $couple = 'GHS/BTC') {
 		return $this->api_call('place_order', array(
-			"type" => ptype,
-	    	"amount" => amount,
-			"price" => price), true, couple);
+			"type" => $ptype,
+	    	"amount" => $amount,
+			"price" => $price), true, couple);
 	}
-} 
+}
+
 ?>
