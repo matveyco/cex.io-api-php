@@ -127,7 +127,7 @@ class cexapi {
 	
 	/**
 	 * Get the current trade history for the given pair, or 'GHS/BTC' by default.
-	 * @param number $since
+	 * @param int $since
 	 * @param string $couple
 	 * @return array JSON results
 	 */
@@ -164,8 +164,8 @@ class cexapi {
 	/**
 	 * Place an order, with the given type, amount, price, and pair. Defaults to Buying 'GHS/BTC'.
 	 * @param string $ptype
-	 * @param number $amount
-	 * @param number $price
+	 * @param float $amount
+	 * @param float $price
 	 * @param string $couple
 	 * @return array JSON order data
 	 */
