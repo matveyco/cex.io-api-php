@@ -20,10 +20,10 @@ class cexapi {
 	private $nonce_v;
 
 	/**
-	 * Create class
-	 * @param unknown $username
-	 * @param unknown $api_key
-	 * @param unknown $api_secret
+	 * Create cexapi object
+	 * @param string $username
+	 * @param string $api_key
+	 * @param string $api_secret
 	 */
 	public function __construct($username, $api_key, $api_secret) {
 		$this->username = $username;
@@ -32,8 +32,8 @@ class cexapi {
 	}
 
 	/**
-	 * Create signature 
-	 * @return unknown
+	 * Create signature for API call validation
+	 * @return string hash
 	 */
 	private function signature() {
 		$string = $this->nonce_v . $this->username . $this->api_key; //Create string
@@ -52,9 +52,9 @@ class cexapi {
 	 
 	/**
 	 * Send post request to Cex.io API
-	 * @param unknown $url
-	 * @param unknown $param
-	 * @return unknown
+	 * @param string $url
+	 * @param array $param
+	 * @return array JSON results
 	 */
 	private function post($url, $param = array()) {
 		$post = '';
@@ -79,12 +79,12 @@ class cexapi {
 	} 
 	
 	/**
-	 * send api call (over post request)
-	 * @param unknown $method
-	 * @param unknown $param
+	 * Send API call (over post request), to Cex.io server.
+	 * @param string $method
+	 * @param array $param
 	 * @param string $private
 	 * @param string $couple
-	 * @return unknown
+	 * @return array JSON results
 	 */
 	public function api_call($method, $param = array(), $private = false, $couple = '') {
 	   $url = "https://cex.io/api/$method/"; //Create url
@@ -108,57 +108,57 @@ class cexapi {
 	}
 	
 	/**
-	 * 
+	 * Get the current ticker results for the given pair, or 'GHS/BTC' by default.
 	 * @param string $couple
-	 * @return unknown
+	 * @return array JSON results
 	 */
-	public function ticker($couple) {
-		return $this->api_call('order_book', array(), false, $couple = 'GHS/BTC');
+	public function ticker($couple = 'GHS/BTC') {
+		return $this->api_call('order_book', array(), false, $couple);
 	}
 	
 	/**
-	 * 
+	 * Get the current trade history for the given pair, or 'GHS/BTC' by default.
 	 * @param number $since
 	 * @param string $couple
-	 * @return unknown
+	 * @return array JSON results
 	 */
 	public function trade_history($since = 1, $couple = 'GHS/BTC') {
 		return $this->api_call('trade_history', array("since" => $since), false, $couple);
 	}
 	
 	/**
-	 * 
-	 * @return unknown
+	 * Get the current account balance.
+	 * @return array JSON results
 	 */
 	public function balance() {
 		return $this->api_call('balance', array(), true);
 	}
 	
 	/**
-	 * 
+	 * Get the current account open orders for the given pair, or 'GHS/BTC' by default.
 	 * @param string $couple
-	 * @return unknown
+	 * @return array JSON results
 	 */
 	public function open_orders($couple = 'GHS/BTC') {
 		return $this->api_call('open_orders', array(), true, $couple);
 	}
 	
 	/**
-	 * 
-	 * @param unknown $order_id
-	 * @return unknown
+	 * Cancel the given order for the account.
+	 * @param int $order_id
+	 * @return boolean success
 	 */
 	public function cancel_order($order_id) {
 		return $this->api_call('cancel_order', array("id" => $order_id), true);
 	}
 	
 	/**
-	 * 
+	 * Place an order, with the given type, amount, price, and pair. Defaults to Buying 'GHS/BTC'.
 	 * @param string $ptype
 	 * @param number $amount
 	 * @param number $price
 	 * @param string $couple
-	 * @return unknown
+	 * @return array JSON order data
 	 */
 	public function place_order($ptype = 'buy', $amount = 1, $price = 1, $couple = 'GHS/BTC') {
 		return $this->api_call('place_order', array(
