@@ -173,7 +173,7 @@ class cexapi {
 		return $this->api_call('place_order', array(
 			"type" => $ptype,
 	    	"amount" => $amount,
-			"price" => $price), true, couple);
+			"price" => $price), true, $couple);
 	}
 }
 
