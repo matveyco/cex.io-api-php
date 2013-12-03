@@ -113,6 +113,15 @@ class cexapi {
 	 * @return array JSON results
 	 */
 	public function ticker($couple = 'GHS/BTC') {
+		return $this->api_call('ticker', array(), false, $couple);
+	}
+	
+	/**
+	 * Get the current bids and asks for the given pair, or 'GHS/BTC' by default.
+	 * @param string $couple
+	 * @return array JSON results
+	 */
+	public function order_book($couple = 'GHS/BTC') {
 		return $this->api_call('order_book', array(), false, $couple);
 	}
 	
