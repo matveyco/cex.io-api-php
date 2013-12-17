@@ -6,10 +6,12 @@ PHP source files and examples for the Cex.io API.
 2. Generate API key and API secret (https://cex.io/trade/profile)
 3. Create your PHP project
 4. Add the API import:
+
 ```php
 requre_once("cexapi.class.php");
 ```
 5. Create an API object: 
+
 ```php
 $api = new cexapi($username, $api_key, $api_secret);
 ```
@@ -20,10 +22,10 @@ $api_secret;	// Your API secret
 ```
 
 ##Methods and Parameters:
-1. Method parameters
+Parameters:
+
 ```php
 			// Description (Data Type): Examples
-
 $couple;	// Currency pair (String): "GHS/BTC", "NMC/BTC", "GHS/NMC", "BF1/BTC"
 $since;		// Timestamp (Integer): TODO
 $order_id;	// Order Number (Integer): TODO
@@ -31,7 +33,9 @@ $ptype;		// Order Type (String): "buy", "sell"
 $amount;	// Order Quantitity (Float): TODO 
 $price;		// Order Price (Float): TODO
 ```
-2. Methods
+
+Methods:
+
 ```php 
 // Method Format:
 // Description with Parameters(default value)
