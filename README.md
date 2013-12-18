@@ -1,7 +1,7 @@
 #Cex.io API
 PHP source files and examples for the Cex.io API.
 
-##How to use?
+##How to use:
 1. Download API source
 2. Generate API key and API secret (https://cex.io/trade/profile)
 3. Create your PHP project
@@ -55,7 +55,7 @@ trade_history($since, $couple);
 balance();
 
 // Get account open orders for $couple("GHS/BTC")
-current_orders($couple);
+open_orders($couple);
 
 // Cancel account order with $order_id(none)
 cancel_order($order_id);
@@ -109,7 +109,7 @@ var_dump($api->balance());
 Get your current active orders:
 
 ```php
-var_dump($api->current_orders("BF1/BTC"));
+var_dump($api->open_orders("BF1/BTC"));
 ```
 
 ```json
