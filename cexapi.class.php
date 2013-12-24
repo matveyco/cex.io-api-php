@@ -29,6 +29,7 @@ class cexapi {
 		$this->username = $username;
 		$this->api_key = $api_key;
 		$this->api_secret = $api_secret;
+		$this->nonce();
 	}
 
 	/**
@@ -94,11 +95,10 @@ class cexapi {
 		}
 		
 		if ($private === true) { //Create param
-			$this->nonce();
 			$param = array_merge(array(
 					'key' => $this->api_key,
 					'signature' => $this->signature(),
-					'nonce' => $this->nonce_v), $param);
+					'nonce' => $this->nonce_v++), $param);
 	    }
 		
 	    $answer = $this->post($url, $param);
