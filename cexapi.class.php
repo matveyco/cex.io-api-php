@@ -47,7 +47,7 @@ class cexapi {
 	 * Set nonce as timestamp
 	 */
 	private function nonce() {
-		$this->nonce_v = time();
+		$this->nonce_v = round(microtime(true)*100);
 	}
 	 
 	/**
