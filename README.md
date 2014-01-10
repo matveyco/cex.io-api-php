@@ -8,7 +8,7 @@ PHP source files and examples for the Cex.io API.
 4. Add the API import:
 
 ```php
-requre_once("cexapi.class.php");
+require_once("cexapi.class.php");
 ```
 5. Create an API object:
 
@@ -138,3 +138,11 @@ True
 
 ##Additional Help
 * Cex.io online API documentation: https://cex.io/api
+
+##Known Issues
+
+API always returns null. Issue is caused by incorrect SSL certificates on the client. To fix, download [this .pem file](http://curl.haxx.se/ca/cacert.pem) and add the following line to your _php.ini_ file:
+
+```
+curl.cainfo=[PATH-TO]/cacert.pem
+```
