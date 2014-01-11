@@ -74,6 +74,11 @@ class cexapi {
 		curl_setopt($ch, CURLOPT_USERAGENT, 'phpAPI');
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 		$out = curl_exec($ch);
+		
+		if (curl_errno($ch)) {
+			trigger_error("cURL failed. Error #".curl_errno($ch).": ".curl_error($ch), E_USER_ERROR);
+		}
+		
 		curl_close($ch);	
 		
 		return $out;
