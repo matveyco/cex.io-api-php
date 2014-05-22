@@ -93,7 +93,7 @@ class cexapi {
 	 * @return array JSON results
 	 */
 	public function api_call($method, $param = array(), $private = false, $couple = '') {
-	   $url = "https://cex.io/api/$method/"; //Create url
+	   $url = "https://cex.io/api/$method"; //Create url
 	   
 		if ($couple !== '') {
 			$url .= "$couple/"; //set couple if needed
@@ -118,7 +118,7 @@ class cexapi {
 	 * @return array JSON results
 	 */
 	public function ticker($couple = 'GHS/BTC') {
-		return $this->api_call('ticker', array(), false, $couple);
+		return $this->api_call('ticker/', array(), false, $couple);
 	}
 	
 	/**
@@ -127,7 +127,7 @@ class cexapi {
 	 * @return array JSON results
 	 */
 	public function order_book($couple = 'GHS/BTC') {
-		return $this->api_call('order_book', array(), false, $couple);
+		return $this->api_call('order_book/', array(), false, $couple);
 	}
 	
 	/**
@@ -137,7 +137,7 @@ class cexapi {
 	 * @return array JSON results
 	 */
 	public function trade_history($since = 1, $couple = 'GHS/BTC') {
-		return $this->api_call('trade_history', array("since" => $since), false, $couple);
+		return $this->api_call('trade_history/', array("since" => $since), false, $couple);
 	}
 	
 	/**
@@ -145,7 +145,7 @@ class cexapi {
 	 * @return array JSON results
 	 */
 	public function balance() {
-		return $this->api_call('balance', array(), true);
+		return $this->api_call('balance/', array(), true);
 	}
 	
 	/**
@@ -154,7 +154,7 @@ class cexapi {
 	 * @return array JSON results
 	 */
 	public function open_orders($couple = 'GHS/BTC') {
-		return $this->api_call('open_orders', array(), true, $couple);
+		return $this->api_call('open_orders/', array(), true, $couple);
 	}
 	
 	/**
@@ -163,7 +163,7 @@ class cexapi {
 	 * @return boolean success
 	 */
 	public function cancel_order($order_id) {
-		return $this->api_call('cancel_order', array("id" => $order_id), true);
+		return $this->api_call('cancel_order/', array("id" => $order_id), true);
 	}
 	
 	/**
@@ -175,10 +175,24 @@ class cexapi {
 	 * @return array JSON order data
 	 */
 	public function place_order($ptype = 'buy', $amount = 1, $price = 1, $couple = 'GHS/BTC') {
-		return $this->api_call('place_order', array(
+		return $this->api_call('place_order/', array(
 			"type" => $ptype,
 	    	"amount" => $amount,
 			"price" => $price), true, $couple);
+	}
+	
+	/**
+	* Returns overall hash rate in MH/s.
+	*/
+	public function hashrate(){
+		return $this->api_call('ghash.io/hashrate', array(), true);
+	}
+	
+	/**
+	* Returns workers' hash rate and rejected shares.
+	*/
+	public function workers_hashrate(){
+		return $this->api_call('ghash.io/workers', array(), true);
 	}
 }
 
